@@ -1,0 +1,61 @@
+body {
+  font-family: sans-serif;
+  margin: 0px;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.app-header {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  align-content: center;
+  color: white;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  margin: auto;
+}
+
+.quote-container {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  margin: 1rem;
+}
+
+button {
+  width: 300px;
+  height: 50px;
+  border-color: transparent;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+input {
+  margin-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-color: transparent;
+}

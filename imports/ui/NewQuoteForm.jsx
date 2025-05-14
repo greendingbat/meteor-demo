@@ -21,6 +21,15 @@ const NewQuoteForm = ({ onSubmit }) => {
         type="submit"
         onClick={(e) => {
           e.preventDefault();
+          if (
+            !newQuote ||
+            !newAuthor ||
+            newQuote.trim() === "" ||
+            newAuthor.trim() === ""
+          ) {
+            alert("Please fill in both fields");
+            return;
+          }
           onSubmit(newQuote, newAuthor);
         }}
       >

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useTracker, useSubscribe } from "meteor/react-meteor-data";
 import { QuotesCollection } from "../api/QuotesCollection";
 import { getSpaceImage } from "../api/nasa";
-import "../../client/main.css";
 import NewQuoteForm from "./NewQuoteForm";
+import "../api/quotesMethods";
+import "../../client/main.css";
 
 export const App = () => {
   const [quoteState, setQuoteState] = useState({ quote: "", author: "" });
@@ -22,9 +23,17 @@ export const App = () => {
     };
   };
 
+  const handleAddQuoteClick = async (newQuote, newAuthor) => {
+    await Meteor.callAsync("quotes.insert", {
+      quote: newQuote.trim(),
+      author: newAuthor.trim(),
+    });
+    setQuoteState({ quote: newQuote, author: newAuthor });
+    setShowForm(false);
+  };
+
   useEffect(() => {
     if (!quoteLoading()) {
-      const quote = quotes[Math.floor(Math.random() * quotes.length)];
       setQuoteState(randomQuote());
     }
   }, [quoteLoading()]);
@@ -60,11 +69,9 @@ export const App = () => {
         <button onClick={() => setShowForm(!showForm)}>New Quote</button>
         {showForm && (
           <NewQuoteForm
-            onSubmit={(newQuote, newAuthor) => {
-              console.log(newQuote, newAuthor);
-              setQuoteState({ quote: newQuote, author: newAuthor });
-              setShowForm(false);
-            }}
+            onSubmit={(newQuote, newAuthor) =>
+              handleAddQuoteClick(newQuote, newAuthor)
+            }
           />
         )}
       </div>

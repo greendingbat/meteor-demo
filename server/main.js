@@ -1,6 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { QuotesCollection } from "/imports/api/QuotesCollection";
 import "../imports/api/QuotesPublications";
+import "../imports/api/quotesMethods";
 
 const insertQuote = (quote, author) =>
   QuotesCollection.insertAsync({ quote, author });

@@ -6,7 +6,7 @@ import NewQuoteForm from "./NewQuoteForm";
 import "../api/quotesMethods";
 import "../../client/main.css";
 
-export const App = () => {
+const QuotesInSpace = () => {
   const [quoteState, setQuoteState] = useState({ quote: "", author: "" });
   const [imageUrl, setImageUrl] = useState("");
   const [imageLoading, setImageLoading] = useState(true);
@@ -78,3 +78,5 @@ export const App = () => {
     </div>
   );
 };
+
+export default QuotesInSpace;
